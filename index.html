@@ -1,0 +1,332 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Let's Git</title>
+    <meta name="description" content="An introductory material about Git">
+    <meta name="author" content="Lucas A. Ferreira Lopes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/icon.png" />
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/serif.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <img class="pure-img logo" src="images/git-logo.png">
+            </section>
+            <section>
+                <h2>What is Git?</h2>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">
+                        Distributed version control system
+                    </li>
+                    <li class="fragment" data-fragment-index="1">
+                        Free and open source software
+                    </li>
+                    <li class="fragment" data-fragment-index="2">
+                        Created by
+                        <strong>Linus Torvalds</strong> in
+                        <em>2005</em>
+                    </li>
+                </ul>
+                <p class="fragment observation" data-fragment-index="3">
+                    Means unpleasant person in British English slang
+                </p>
+            </section>
+            <section>
+                <h2>Git <> GitHub</h2>
+                <p class="fragment" data-fragment-index="0">
+                    You
+                    <strong>do not</strong> need GitHub to use Git.
+                </p>
+                <p>
+                    <em class="fragment" data-fragment-index="1">
+                        "GitHub is a
+                        <strong>web-based</strong> Git repository
+                        <strong>hosting service</strong>,
+                    </em>
+                    <em class="fragment" data-fragment-index="2">
+                        which offers all functionality of Git
+                    </em>
+                    <em class="fragment" data-fragment-index="3">
+                        as well as adding its own features."
+                    </em>
+                </p>
+            </section>
+            <section>
+                <section>
+                    <h1>Getting Started</h1>
+                </section>
+                <section>
+                    <h2>SSH</h2>
+                    <p>Used to connect and authenticate to Git server</p>
+                    <ol class="fragment instructions-list" data-fragment-index="0">
+                        <li>
+                            Generate <strong>SSH</strong> Key:
+                            <code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>
+                        </li>
+                        <li>
+                            Copy the created key from the <em>"id_rsa.pub"</em> file
+                        </li>
+                        <li>
+                            Add the new key on GitHub: <em>"Settings > SSH and GPG keys > New SSH key"</em>
+                        </li>
+                    </ol>
+                </section>
+                <section>
+                    <h2>Repository</h2>
+                    <p>A place where the history of your work is stored</p>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            <strong>Local</strong>: All changes happens here, until a <strong>push</strong> occurrence
+                        </li>
+                        <li class="fragment" data-fragment-index="0">
+                            <strong>Remote</strong>: Refers to the centralized server, where all members will <strong>push</strong> code
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            All repository's configuration lives in a <strong>local</strong> <em>".git"</em> subdirectory
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            Creating a <strong>local</strong> repository:
+                            <code>git init</code>
+                            <br/>
+                            Adding a new <strong>remote</strong> repository:
+                            <code>git remote add name git@github.com:username/repo_name</code>
+                            <p class="observation code"><strong>name</strong> is usually defined as <strong>origin</strong></p>
+                        </li>
+                        <li class="fragment"data-fragment-index="3">
+                            Creating a <strong>local</strong> repository from a existing <strong>remote</strong> repository:
+                            <code>git clone git@github.com:username/repo_name</code>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Local workflow</h2>
+                    <p>A local repository consists of three "trees" maintained by git</p>
+                    <ol class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            <strong>Working Directory</strong>: holds the actual files
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            <strong>Index</strong>: acts as a staging area
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            <strong>HEAD</strong>: points to the last commit you have made
+                        </li>
+                    </ol>
+                </section>
+                <section>
+                    <h2>Working with files</h2>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            Verifying all file status:
+                            <code>git status</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            Adding files to the <strong>staging</strong> area:
+                            <code>git add file_name</code>
+                            <code>git add "*.txt"</code>
+                            <code>git add .</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            Removing a file from the <strong>staging</strong> area:
+                            <code>git rm file_name</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="3">
+                            Rollbacking a file in <strong>working dir.</strong>:
+                            <code>git checkout file_name</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="4">
+                            Rollbacking a file in <strong>staging</strong> area:
+                            <code>git reset HEAD file_name</code>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>HEAD and Remote</h2>
+                    <ul class="instructions-list">
+                        <li>
+                            Moving file changes from <strong>Index</strong> to <strong>HEAD</strong>:
+                            <code>git commit -m "Type your commit message here"</code>
+                        </li>
+                        <li>
+                            Pushing your <strong>local</strong> HEAD to the <strong>remote</strong> HEAD
+                            <code>git push remote_name branch_name</code>
+                            <p class="observation code"><strong>remote_name</strong> is usually defined as <strong>origin</strong></p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Fetching from remote</h2>
+                    <p>
+                        People could be working cooperatively in the same repository, 
+                        you should know how to fetch updated data from the remote repository
+                    </p>
+                    <ul class="instructions-list">
+                        <li>
+                            Fetching changes from <strong>remote</strong> repository:
+                            <code>git fetch</code>
+                            <br/>
+                            Merging the <strong>fetched</strong> changes into your local :
+                            <code>git merge branch_name</code>
+                        </li>
+                        <li>
+                            The same result of the both commands above can be achieved using:
+                            <code>git pull rep_name branch_name</code>
+                            <p class="observation code"><strong>rep_name</strong> is usually defined as <strong>origin</strong></p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Stash</h2>
+                    <p>You can store your changes without commiting then
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            Pushing all modifications from <strong>Working Dir.</strong> to a stack:
+                            <code>git stash</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            Listing all stashes stored in the stack:
+                            <code>git stash list</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            Applying the last stash stored in the stack:
+                            <code>git stash apply</code>
+                            <br/>
+                            <p class="observation code">Or applying by its index on <em>stash list</em> using <em>stash@{0}</em> in the end</p>
+                        </li>
+                        <li class="fragment" data-fragment-index="3">
+                            Removing the stash from de stack:
+                            <code>git stash drop</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="4">
+                            You can apply and drop a stash in a single command:
+                            <code>git stash pop</code>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Some useful features</h2>
+                    <ul class="instructions-list">
+                        <li>
+                            Listing the commit logs:
+                            <code>git log</code>
+                        </li>
+                        <li>
+                            Reseting all files to the last commit:
+                            <code>git reset --hard</code>
+                        </li>
+                        <li>
+                            Rollbacking a commit:
+                            <code>git reset --hard commit_hash</code>
+                            <p class="observation code">The commit hashes can be seen in the <em>git log</em> command</p>
+                        </li>
+                        <li>
+                            Showing differences between the <strong>Working Dir.</strong> an the <strong>Index</strong>
+                            <code>git diff</code>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Branches</h1>
+                    <p>Git's structure is like a tree, the "branch" <strong>master</strong> is the trunk, and we can have lots of other branches.</p>
+                </section>
+                <section>
+                    <h2>Working with branches</h2>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            Creating a branch:
+                            <code>git branch branch_name</code>
+                            <br/>
+                            Switching to other branch:
+                            <code>git checkout branch_name</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            Creating and switching to a new branch in a single command:
+                            <code>git checkout -b branch_name</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            Deleting a branch locally:
+                            <code>git branch -d branch_name</code>
+                        </li>
+                        <li class="fragment" data-fragment-index="3">
+                            Deleting a branch remotely:
+                            <code>git push remote_name --delete branch_name</code>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Best practices</h1>
+                </section>
+                <section>
+                    <h2>Commit</h2>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            Should be <em>kind of</em> <strong>ACID</strong> (Atomicity, Consistency, Isolation and Durability)
+                        </li>
+                        <li class="fragment" data-fragment-inex="1">
+                            Commit messages should be good, explaining <strong>what</strong> you have changed and <strong>why</strong> you have changed
+                        </li>
+                        <li class="fragment" data-fragment-inex="2">
+                            Commit messages should be in the imperative, present tense, <em>e.g, "Change", not "changed" or "changes"</em>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Branch</h2>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            A branch should represent a <strong>small</strong> feature in the code
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            Branch names should be <strong>descriptive</strong>
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            A branch should be <strong>deleted</strong> after being merged into the master
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>And finally...</h2>
+                    <ul class="instructions-list">
+                        <li class="fragment" data-fragment-index="0">
+                            Always <strong>fetch</strong> the newest version of the code before you <strong>push</strong> yours.
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            A branch should always have its code reviewed by another dev before merge it into the master, using the <strong>Pull Request</strong> system
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h2>Sources</h2>
+                <ul class="instructions-list">
+                    <li>
+                        http://rogerdudler.github.io/git-guide/
+                    </li>
+                    <li>
+                        https://www.intertech.com/Blog/introduction-to-git-concepts/
+                    </li>
+                    <li>
+                        https://www.tutorialspoint.com/git/git_basic_concepts.htm
+                    </li>
+                    <li>
+                        https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

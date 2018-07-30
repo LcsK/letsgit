@@ -1,0 +1,49 @@
+strong {
+    font-weight: bold!important;
+    color: #A41B02!important;
+}
+
+em {
+    font-style: italic!important;
+}
+
+code {
+    display: inline-block!important;
+    color: #3F3F3F!important;
+    padding: 0.5rem 1rem!important;
+    font-size: 1.25rem!important;
+    width: 80%!important;
+    font-style: italic!important;
+}
+
+h1, h2, h3 {
+    color: #F05033!important;
+}
+
+.pure-img {
+    border: none!important;
+    box-shadow: none!important;
+    background: #F0F1EB!important;
+}
+
+.logo {
+    width: 70%;
+}
+
+.observation {
+    font-size: 1.5rem!important;
+}
+
+.observation.code {
+    margin-top: 0!important;
+    margin-left: 2rem!important;
+    font-size: 1rem!important;
+}
+
+.instructions-list {
+    font-size: 1.5rem!important;
+}
+
+.instructions-list li {
+    padding: 0.2rem 0!important;
+}
